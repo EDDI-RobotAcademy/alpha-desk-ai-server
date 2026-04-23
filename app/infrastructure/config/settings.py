@@ -7,6 +7,14 @@ class Settings(BaseSettings):
     mysql_host: str
     mysql_port: int
     mysql_database: str
+    # BL-BE-54: PostgreSQL — 비정형 데이터 저장용
+    pg_host: str = "localhost"
+    pg_port: int = 5432
+    pg_user: str = "postgres"
+    pg_password: str = ""
+    pg_database: str = "alphadesk_raw"
+    pg_pool_size: int = 5
+    pg_max_overflow: int = 20
     redis_host: str = "localhost"
     redis_port: int = 6379
     redis_password: str = ""
@@ -16,6 +24,8 @@ class Settings(BaseSettings):
     kakao_client_secret: str = ""
     kakao_redirect_uri: str = ""
     serp_api_key: str = ""
+    serp_base_url: str = "https://serpapi.com/search"
+    serp_timeout: float = 10.0
     finnhub_api_key: str = ""
     data_go_kr_service_key: str = ""
     twelve_data_api_key: str = ""
@@ -31,9 +41,12 @@ class Settings(BaseSettings):
     openai_responses_model: str = "gpt-5-mini"
     # BL-BE-51: 추천 이유 문장 전용 (기본 gpt-5-mini)
     openai_recommendation_reason_model: str = "gpt-5-mini"
+    # LangGraph 멀티 에이전트 그래프 전용 모델
+    langgraph_model: str = "gpt-4.1-mini"
     youtube_api_key: str = ""
     cors_allowed_frontend_url: str = "http://localhost:3000"
     frontend_auth_callback_url: str = "http://localhost:3000/auth-callback"
+    admin_secret_code: str = ""
     debug: bool = False
 
     model_config = {
